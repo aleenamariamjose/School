@@ -1,0 +1,38 @@
+<!-- Visualforce is a framework used by SF to create custom UI.
+    It includes a tag based mark-up language similar to HTML.
+    <apex:page> is VF version of <html>
+
+    To connect a VF page with Apex, you must include a Controller.
+    There are three types of Controllers: Standard Controller, Standard Set Controller(Standard List Controller), 
+    and Custom Controllers. 
+    To add functionalities to these you may utilize infinite amount of extensions. But, you can only have one controller. 
+    
+    Each has a Standard Controller with pre-defined controller methods. 
+    To use a standard controller, you must include the standardController attribute within the <apex:page> tag.
+-->
+<apex:page standardController="Account">
+    <apex:message />
+<!-- Use <apex:form> when you want to capture user input -->
+    <apex:form>
+        <!--<apex:pageBlock> - An area of a page that uses styling similar to the SF Classic detail page.-->
+        <apex:pageBlock title="Please Enter Account Information">
+            <!-- <apex:pageBlockSection> - A section of data within a <apex:pageBlock> component, similar
+                to a section in a standard SF page layout -->
+                <apex:pageBlockSection title="Account Information" columns="4">
+                    <!--<apex:inputField> - An HTML input element for a value that corresponds to a field on a SF object. This component respects the attribute of the associate field, including whether the field if required or unique, and the UI widget to display to get an output from the user -->
+                        <apex:inputField value="{!Account.Name}"/> <!-- Data Binding     2 way connection -->
+                        <apex:inputField value="{!Account.Site}"/>
+                        <apex:inputField value="{!Account.Type}"/>
+                        <apex:inputField value="{!Account.accountNumber}"/>
+                        <apex:inputField value="{!Account.Phone}" required="true"/>
+                </apex:pageBlockSection>
+
+                <apex:pageBlockButtons location="bottom"/>
+
+                <apex:pageBlockButtons>
+                    <apex:commandButton action="{!save}" value="Save" /> <!-- Action Binding-->
+                </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

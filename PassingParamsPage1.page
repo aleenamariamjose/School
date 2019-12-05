@@ -1,0 +1,12 @@
+<!-- 
+    to use a custom controller, insert the controller attribute within the <apex:page> tab
+-->
+
+<apex:page controller="PassingParamsController">
+    <apex:form>
+        <apex:commandLink value="Page2" action="{!goToPageTwo}">
+            <!--pass parameters to the url  -->
+            <apex:param name="myParam" value="Hello"/>
+        </apex:commandLink>
+    </apex:form>
+</apex:page>

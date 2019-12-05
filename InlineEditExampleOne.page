@@ -1,0 +1,6 @@
+<apex:page standardController="Account">
+    <!--
+        apex detail page for a particular object, as defined by the associated page layout for the object in setup.
+    -->
+    <apex:detail subject="{!Id}" relatedList="true" title="true" inlineEdit="true" />
+</apex:page>

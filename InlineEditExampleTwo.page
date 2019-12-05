@@ -1,0 +1,30 @@
+<apex:page standardController="Account" recordSetVar="accounts"> 
+    <apex:form>
+        <apex:pageBlock title="Accounts">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!edit}" value="Edit" />
+                <apex:commandButton action="{!save}" value="save" />
+                <apex:commandButton action="{!cancel}" value="cancel" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column>
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputField value="{!a.Name}" />
+                </apex:column>
+                <apex:column>
+                    <apex:facet name="header">Annual Revenue</apex:facet>
+                    <apex:outputField value="{!a.AnnualRevenue}" />
+                </apex:column>
+                    <apex:column>
+                    <apex:facet name="header">Industry</apex:facet>
+                    <apex:outputField value="{!a.Industry}" />
+                 </apex:column>
+                 <!-- 
+                     This comonent provide inline editing support to parent components.
+                     in order to support inline editing, this component must also be a descendant of an apex:form tag
+                -->
+                 <apex:inlineEditSupport event="ondblclick" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

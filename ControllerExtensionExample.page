@@ -1,0 +1,19 @@
+<!-- You must use a standard/ Standard Set/ Custom controller with your extension
+Extensions are just Apex classes.
+You should use an extension to extend functionality of a standard or custom controller.
+
+Why use an extension?
+You want to leverage built-in functionality of a standard controller, such as save, edit, delete, and etc 
+but want to override onr or more of these actions.
+
+You want to add new actions that can be reused elsewhere.
+
+-->
+<apex:page standardController="Account" extensions="MyControllerExtension">
+    {!Greeting} <br />
+    <apex:form>
+        Account Name<apex:inputField style="width:200px;" value="{!Account.Name}" />
+        <br />
+        <apex:commandButton action="{!save}" value="Save" />
+    </apex:form>
+</apex:page>

@@ -1,0 +1,8 @@
+<!-- To display your page as a PDF, use the renderAs attribute within the <apex:page> tag.
+    VF only support PDF -->
+<apex:page standardController="Contact" renderAs="pdf">
+    I am {!Contact.FirstName} {!Contact.LastName}. <br />
+    
+    <apex:outputField value="{!Contact.FirstName}" title="First Name"/>
+    <apex:outputField value="{!Contact.AccountId}" title="Account"/>
+</apex:page>

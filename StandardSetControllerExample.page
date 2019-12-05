@@ -1,0 +1,52 @@
+<!--  
+    Standard List controllers allow you to create VF pages that can display or act on a set of records.
+
+    Examples of existing SF pages that work with a set of records include: list views, related lists, mass action- mass email, mass delete
+
+    The recordSetVar attribute not only indicates that the page uses a list controllers, is sets the variable name of the record collection.
+      - this variable can be used to access data in the record collection.
+
+    Just like std controllers, std list controllers come with a set of pre-built methods. They also contain methods relevant to pagination
+-->
+
+<apex:page standardController="Account" recordSetVar="accounts" extensions="PaginationExtension">
+
+    <apex:pageBlock title="Accounts">
+        <!-- 
+            <apex:pageblocktable> must go inside of a pageBlock and it uses SF styling.
+                Can include up to 1k items, or 10k if it's read only.
+                value- the list u r iterating over
+                var - what u r going to call each iteration
+        -->
+        <apex:pageBlockTable value="{!displayedAccounts}" var="a">  <!--for each -->
+             <apex:column value="{!a.Name}" />
+        </apex:pageBlockTable>
+
+        <apex:form>
+                <apex:commandButton action="{!setController.Previous}" value="Previous" rendered="{!setController.hasPrevious}"/>
+                <apex:commandButton action="{!setController.Next}" value="Next" rendered="{!setController.hasNext}"/>
+        </apex:form>
+
+        <apex:dataTable value="{!displayedAccounts}" var="a">
+            <!-- 
+
+            -->
+            <apex:facet name="caption">Data Table Caption</apex:facet>
+            <apex:facet name="caption">Data Table Header</apex:facet>
+            <apex:facet name="caption">Data Table Footer</apex:facet>
+
+            <apex:column>
+                <apex:facet name="header">Name</apex:facet>
+                <apex:outputText value="{!a.Name}"/>
+            </apex:column>
+            <apex:column headerValue="Type">
+                    <apex:outputText value="{!a.Type}"/>
+            </apex:column>
+        </apex:dataTable>
+
+        <apex:repeat value="{!displayedAccounts}" var="a">
+            Billing Street: <apex:outputText value="{!a.BillingStreet}" /> <br />
+        </apex:repeat>
+    </apex:pageBlock>
+
+</apex:page>
